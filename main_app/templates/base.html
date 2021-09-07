@@ -1,0 +1,21 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% comment %} Main CSS {% endcomment %}
+  <link rel="stylesheet" href="{% static 'styles/main.css' %}">
+  <title>Remember When -- {% block title %}{% endblock title %}</title>
+</head>
+<body>
+  <nav>Nav bar for later</nav>
+    <div>
+
+      {% block content %}{% endblock content %}
+
+    </div>
+</body>
+</html>
