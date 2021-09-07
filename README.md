@@ -16,28 +16,28 @@ One feature is to allow an individual post to be made ‘public’, which then a
 **Wireframes**
 
 Splash Page
-![](./images/splash.png)
+![splash](./images/Splash.png)
 
 Login
-![](./images/login.png)
+![login](./images/Login.png)
 
 Register
-![](./images/register.png)
+![register](./images/Register.png)
 
 Shared Memories
-![](./images/sharedmemories.png)
+![shared](./images/SharedMemories.png)
 
 All Show
-![](./images/allshow.png)
+![all](./images/AllShow.png)
 
 Memory Show
-![](./images/memoryshow.png)
+![show](./images/MemoryShow.png)
 
 Create Edit
-![](./images/createedit.png)
+![create](./images/CreateEdit.png)
 
 Delete Prompt
-![](./images/deleteprompt.png)
+![delete](./images/DeletePrompt.png)
 
 
 **Data Models**
