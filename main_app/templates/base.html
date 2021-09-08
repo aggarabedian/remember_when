@@ -10,16 +10,17 @@
   <link rel="stylesheet" href="{% static 'styles/main.css' %}">
 
   {% comment %} Favicon {% endcomment %}
-  <link rel="shortcut icon" href="../static/images/favicon.ico" type="image/x-icon">
-  <link rel="icon" href="../static/images/favicon.ico" type="image/x-icon">
-  <title>Remember When -- {% block title %}{% endblock title %}</title>
+  <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+  <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+
+  <title>Remember When - {% block title %}{% endblock title %}</title>
 </head>
 <body>
   <nav class="navbar">
     <ul class="navbar_grid">
       <div class="navbar_logo_container">
         <a class="navbar_logo" href="#">
-          <img src="../static/images/logo.png" alt="logo">
+          <img src="{% static 'images/logo.png' %}" alt="logo">
         </a>
       </div>
       <li class="navbar_link" ><a href="#"></a>Login</li>

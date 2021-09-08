@@ -33,6 +33,14 @@ body {
   justify-self: end;
 }
 
+.journal_list {
+  margin: 10px;
+}
+
+.memory_show_container {
+  border: 2px dotted black;
+}
+
 .memory_photo {
   width: 300px;
   height: auto;

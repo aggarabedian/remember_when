@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}Memory{% endblock title %}
+{% block title %}{{memory.title}}{% endblock title %}
 
 {% block content %}
 
@@ -8,9 +8,11 @@
 
 {% for memory in memories %}
 
-  <h2>{{memory.title}}</h2>
-  <p>{{memory.content}}</p>
-  <img class="memory_photo" src="{{memory.photo.url}}" alt="{{memory.title}}">
+  <div class="memory_show_container">
+    <h2>{{memory.title}}</h2>
+    <p>{{memory.content}}</p>
+    <img class="memory_photo" src="{{memory.photo.url}}" alt="{{memory.title}}">
+  </div>
 
 {% endfor %}
 
