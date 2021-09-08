@@ -32,3 +32,8 @@ body {
   align-self: center;
   justify-self: end;
 }
+
+.memory_photo {
+  width: 300px;
+  height: auto;
+}

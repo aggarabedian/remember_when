@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Memory{% endblock title %}
+
+{% block content %}
+
+<h1>This will be a show page for a specific memory.</h1>
+
+{% for memory in memories %}
+
+  <h2>{{memory.title}}</h2>
+  <p>{{memory.content}}</p>
+  <img class="memory_photo" src="{{memory.photo.url}}" alt="{{memory.title}}">
+
+{% endfor %}
+
+
+{% endblock content %}
+
