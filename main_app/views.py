@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.views import View
 from django.http import HttpResponse
 from django.views.generic.base import TemplateView
+from django.views.generic.edit import CreateView
 from django.views.generic import DetailView
 
 
@@ -33,3 +34,9 @@ class MemoryView(TemplateView):
     context = super().get_context_data(**kwargs)
     context["memories"] = Memory.objects.all()
     return context
+
+class JournalCreate(CreateView):
+  model = Journal
+  fields = ['name', 'birthdate', 'total_memories','created_at', 'user']
+  template_name = "journal_create.html"
+  success_url = "/journals/"
