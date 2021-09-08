@@ -1,3 +1,32 @@
+
+
 body {
   background-color: seagreen;
+  margin: 0px;
+  padding: 0px;
+}
+
+.navbar {
+  margin-top: -16px;
+}
+
+.navbar_grid {
+  display: grid;
+  background-color: rgb(15, 165, 175);
+  padding: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 1rem;
+}
+
+.navbar_logo_container {
+  justify-self: center;
+}
+
+.navbar_logo {
+  justify-self: start;
+
+}
+
+.navbar_link {
+
 }

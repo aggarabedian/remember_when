@@ -8,14 +8,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   {% comment %} Main CSS {% endcomment %}
   <link rel="stylesheet" href="{% static 'styles/main.css' %}">
+
+  {% comment %} Favicon {% endcomment %}
+  <link rel="shortcut icon" href="../static/images/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="../static/images/favicon.ico" type="image/x-icon">
   <title>Remember When -- {% block title %}{% endblock title %}</title>
 </head>
 <body>
-  <nav>Nav bar for later</nav>
+  <nav class="navbar">
+    <ul class="navbar_grid">
+      <div class="navbar_logo_container">
+        <a class="navbar_logo" href="#">
+          <img src="../static/images/logo.png" alt="logo">
+          <br>
+          rememberwhen
+        </a>
+      </div>
+      <li class="navbar_link" ><a href="#"></a>Login</li>
+      <li class="navbar_link" ><a href="#"></a>Register</li>
+    </ul>
+  </nav>
+    
+    
     <div>
-
       {% block content %}{% endblock content %}
-
     </div>
 </body>
 </html>
