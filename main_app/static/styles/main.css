@@ -13,20 +13,22 @@ body {
 .navbar_grid {
   display: grid;
   background-color: rgb(15, 165, 175);
-  padding: 1rem;
+  padding: 0.5rem;
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   gap: 1rem;
 }
 
 .navbar_logo_container {
-  justify-self: center;
+  display: grid;
 }
 
 .navbar_logo {
   justify-self: start;
+  align-self: center;
 
 }
 
 .navbar_link {
-
+  align-self: center;
+  justify-self: end;
 }
