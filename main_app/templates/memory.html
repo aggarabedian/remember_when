@@ -11,7 +11,11 @@
   <div class="memory_show_container">
     <h2>{{memory.title}}</h2>
     <p>{{memory.content}}</p>
+    {% if memory.photo %}
     <img class="memory_photo" src="{{memory.photo.url}}" alt="{{memory.title}}">
+    {% else %}
+    <img class="memory_photo" src="https://rememberwhen628.s3.us-west-1.amazonaws.com/media/default.png" alt="{{memory.title}}">
+    {% endif %}
   </div>
 
 {% endfor %}
