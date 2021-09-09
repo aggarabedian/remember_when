@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from django.views.generic.base import TemplateView
 from django.views.generic.edit import CreateView
 from django.views.generic.detail import DetailView
+from django.urls import reverse
 
 
 # Imports Models
@@ -39,6 +40,14 @@ class MemoryDetail(TemplateView):
 
 class JournalCreate(CreateView):
   model = Journal
-  fields = ['name', 'birthdate', 'total_memories','created_at', 'user']
+  fields = ['name', 'birthdate']
   template_name = "journal_create.html"
   success_url = "/journals/"
+
+  def form_valid(self, form):
+    form.instance.user = self.request.user
+    return super().form_valid(form)
+  
+  # Add redirect to users journals
+  # def get_success_url(self):
+  #   return reverse("")
