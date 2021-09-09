@@ -68,3 +68,15 @@ class RegisterView(View):
     else:
       context = {"form": form}
       return render(request, "registration/register.html", context)
+
+class MemoryCreate(CreateView):
+  model = Memory
+  fields = ['title', 'content', 'is_public', 'photo', 'journal']
+  template_name = "memory_create.html"
+  
+  def form_valid(self, form):
+    form.instance.user = self.request.user
+    return super().form_valid(form)
+  
+  def get_success_url(self):
+    return reverse("memory_detail", kwargs={'pk': self.object.pk})

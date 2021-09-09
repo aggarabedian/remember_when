@@ -5,10 +5,7 @@
 {% block content %}
 
 <h1>This will be a show page for a specific memory.</h1>
-<h2>{{memory.title}}</h2>
-<p>{{memory.content}}</p>
 
-{% comment %} {% for memory in memories %}
 
   <div class="memory_show_container">
     <h2>{{memory.title}}</h2>
@@ -16,11 +13,10 @@
     {% if memory.photo %}
     <img class="memory_photo" src="{{memory.photo.url}}" alt="{{memory.title}}">
     {% else %}
-    <img class="memory_photo" src="https://rememberwhen628.s3.us-west-1.amazonaws.com/media/default.png" alt="{{memory.title}}">
+    {% comment %} <img class="memory_photo" src="https://rememberwhen628.s3.us-west-1.amazonaws.com/media/default.png" alt="{{memory.title}}"> {% endcomment %}
     {% endif %}
   </div>
 
-{% endfor %} {% endcomment %}
 
 
 {% endblock content %}

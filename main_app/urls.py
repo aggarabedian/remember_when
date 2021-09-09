@@ -8,4 +8,5 @@ urlpatterns = [
   path('memory/<int:pk>/', views.MemoryDetail.as_view(), name='memory_detail'),
   path('journals/new/', views.JournalCreate.as_view(), name='journal_create'),
   path('accounts/register/', views.RegisterView.as_view(), name='register'),
+  path('memory/new/', views.MemoryCreate.as_view(), name='memory_create'),
 ]
