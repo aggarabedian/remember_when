@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 
-{% block title %}New Memory{% endblock title %}
+{% block title %}Edit Memory{% endblock title %}
 
 {% block content %}
 
-  <h1>New Memory Form</h1>
+  <h1>Update {{memory.title}}</h1>
 
   <form method="POST">
     {% csrf_token %}

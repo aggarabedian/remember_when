@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.views import View
 from django.http import HttpResponse
 from django.views.generic.base import TemplateView
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView
 from django.views.generic.detail import DetailView
 from django.urls import reverse
 
@@ -78,5 +78,18 @@ class MemoryCreate(CreateView):
     form.instance.user = self.request.user
     return super().form_valid(form)
   
+  def get_success_url(self):
+    return reverse("memory_detail", kwargs={'pk': self.object.pk})
+
+
+class MemoryUpdate(UpdateView):
+  model = Memory
+  fields = ['title', 'content', 'is_public', 'photo']
+  template_name = "memory_update.html"
+  
+  def form_valid(self, form):
+    form.instance.user = self.request.user
+    return super().form_valid(form)
+
   def get_success_url(self):
     return reverse("memory_detail", kwargs={'pk': self.object.pk})
