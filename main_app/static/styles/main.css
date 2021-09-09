@@ -7,7 +7,7 @@ body {
 }
 
 .navbar {
-  margin-top: -16px;
+
 }
 
 .navbar_grid {
@@ -28,7 +28,7 @@ body {
 
 }
 
-.navbar_link {
+.navbar_right {
   align-self: center;
   justify-self: end;
 }

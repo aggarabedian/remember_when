@@ -51,3 +51,20 @@ class JournalCreate(CreateView):
   # Add redirect to users journals
   # def get_success_url(self):
   #   return reverse("")
+
+class RegisterView(View):
+  
+  def get(self, request):
+    form = UserCreationForm()
+    context = {"form": form}
+    return render(request, "registration/register.html", context)
+
+  def post(self, request):
+    form = UserCreationForm(request.POST)
+    if form.is_valid():
+      user = form.save()
+      login(request, user)
+      return redirect("home")
+    else:
+      context = {"form": form}
+      return render(request, "registration/register.html", context)
