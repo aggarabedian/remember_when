@@ -3,13 +3,14 @@ from django.views import View
 from django.http import HttpResponse
 from django.views.generic.base import TemplateView
 from django.views.generic.edit import CreateView
-from django.views.generic import DetailView
+from django.views.generic.detail import DetailView
 
 
 # Imports Models
 from .models import Journal, Memory
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 
 # Create your views here.
 
@@ -27,12 +28,13 @@ class JournalList(TemplateView):
     context["journals"] = Journal.objects.all()
     return context
 
-class MemoryView(TemplateView):
-  template_name = "memory.html"
+class MemoryDetail(TemplateView):
+  model = Memory
+  template_name = "memory_detail.html"
 
   def get_context_data(self, **kwargs):
     context = super().get_context_data(**kwargs)
-    context["memories"] = Memory.objects.all()
+    context["memory"] = Memory.objects.get(pk=kwargs["pk"])
     return context
 
 class JournalCreate(CreateView):

@@ -5,8 +5,10 @@
 {% block content %}
 
 <h1>This will be a show page for a specific memory.</h1>
+<h2>{{memory.title}}</h2>
+<p>{{memory.content}}</p>
 
-{% for memory in memories %}
+{% comment %} {% for memory in memories %}
 
   <div class="memory_show_container">
     <h2>{{memory.title}}</h2>
@@ -18,7 +20,7 @@
     {% endif %}
   </div>
 
-{% endfor %}
+{% endfor %} {% endcomment %}
 
 
 {% endblock content %}
