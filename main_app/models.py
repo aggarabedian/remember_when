@@ -2,7 +2,7 @@ from django.db.models import Model, CharField, TextField, BooleanField, ForeignK
 from django.db.models.fields import DateField, DateTimeField, IntegerField
 from django.db.models.deletion import CASCADE
 from django.contrib.auth.models import User
-from django.db.models.fields.files import FileField
+from django.db.models.fields.files import FileField, ImageField
 
 # Create your models here.
 
@@ -26,7 +26,7 @@ class Memory(Model):
   content = TextField(max_length=500)
   created_at = DateTimeField(auto_now_add=True)
   is_public = BooleanField(default=False)
-  photo = FileField(upload_to='media/')
+  photo = ImageField(upload_to='media/', blank=True, null=True)
   journal = ForeignKey(Journal, on_delete=CASCADE, related_name='memories')
 
   def __str__(self):
