@@ -18,8 +18,10 @@ from django.contrib.auth.models import User
 class Home(TemplateView):
   template_name = "home.html"
 
+
 class About(TemplateView):
   template_name = "about.html"
+
 
 class JournalList(TemplateView):
   template_name = "journal_list.html"
@@ -38,6 +40,7 @@ class MemoryDetail(TemplateView):
     context["memory"] = Memory.objects.get(pk=kwargs["pk"])
     return context
 
+
 class JournalCreate(CreateView):
   model = Journal
   fields = ['name', 'birthdate']
@@ -51,6 +54,7 @@ class JournalCreate(CreateView):
   # Add redirect to users journals
   # def get_success_url(self):
   #   return reverse("")
+
 
 class RegisterView(View):
   
@@ -68,6 +72,7 @@ class RegisterView(View):
     else:
       context = {"form": form}
       return render(request, "registration/register.html", context)
+
 
 class MemoryCreate(CreateView):
   model = Memory
@@ -94,6 +99,7 @@ class MemoryUpdate(UpdateView):
   def get_success_url(self):
     return reverse("memory_detail", kwargs={'pk': self.object.pk})
 
+
 class JournalDetail(TemplateView):
   model = Journal
   template_name = "journal_detail.html"
@@ -107,4 +113,9 @@ class JournalDetail(TemplateView):
 class MemoryDelete(DeleteView):
   model = Memory
   template_name = "memory_delete_confirmation.html"
+  success_url = "/journals/"
+
+class JournalDelete(DeleteView):
+  model = Journal
+  template_name = "journal_delete_confirmation.html"
   success_url = "/journals/"

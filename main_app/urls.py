@@ -12,4 +12,5 @@ urlpatterns = [
   path('memory/<int:pk>/update/', views.MemoryUpdate.as_view(), name='memory_update'),
   path('journals/<int:pk>/', views.JournalDetail.as_view(), name='journal_detail'),
   path('memory/<int:pk>/delete/', views.MemoryDelete.as_view(), name='memory_delete'),
+  path('journals/<int:pk>/delete/', views.JournalDelete.as_view(), name='journal_delete')
 ]

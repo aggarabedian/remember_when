@@ -5,6 +5,7 @@
 {% block content %}
 
 <h1>This will be a show page for a specific journal.</h1>
+<a href="{% url 'journal_delete' journal.pk %}">Delete Journal</a>
 
 
   <div class="journal_show_container">
