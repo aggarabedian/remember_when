@@ -5,12 +5,14 @@ from django.views.generic.base import TemplateView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.detail import DetailView
 from django.urls import reverse
+from django.contrib.auth import login
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 
 
 # Imports Models
 from .models import Journal, Memory
-from django.contrib.auth import login
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
 # Create your views here.
@@ -23,8 +25,8 @@ class About(TemplateView):
   template_name = "about.html"
 
 
-class JournalList(TemplateView):
-  template_name = "journal_list.html"
+class PublicList(TemplateView):
+  template_name = "journal_public.html"
 
   def get_context_data(self, **kwargs):
     context = super().get_context_data(**kwargs)
@@ -119,3 +121,16 @@ class JournalDelete(DeleteView):
   model = Journal
   template_name = "journal_delete_confirmation.html"
   success_url = "/journals/"
+
+@method_decorator(login_required, name='dispatch')
+class JournalList(TemplateView):
+  template_name = "journal_list.html"
+
+  def get_context_data(self, **kwargs):
+    context = super().get_context_data(**kwargs)
+    user = self.request.user
+    if user != None:
+      context["journals"] = Journal.objects.filter(user=self.request.user)
+      return context
+    else:
+      return redirect('/')

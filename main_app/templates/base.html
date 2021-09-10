@@ -25,7 +25,7 @@
           <img src="{% static 'images/logo.png' %}" alt="logo">
         </a>
         <a href="{% url 'about' %}">About</a>
-        <a href="{% url 'public' %}">Shared Memories</a>
+        <a href="{% url 'public' %}">Public Memories</a>
       </div>
     {% if user.is_authenticated %}
       <div class="navbar_right">
