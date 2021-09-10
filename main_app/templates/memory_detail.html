@@ -16,6 +16,7 @@
     {% comment %} <img class="memory_photo" src="https://rememberwhen628.s3.us-west-1.amazonaws.com/media/default.png" alt="{{memory.title}}"> {% endcomment %}
     {% endif %}
   </div>
+  <a href="{% url 'memory_delete' memory.pk %}">Delete Memory</a>
 
 
 

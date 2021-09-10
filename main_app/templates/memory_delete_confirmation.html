@@ -3,12 +3,13 @@
 {% block title %}Delete {{memory.title}}?{% endblock title %}
 
 {% block content %}
+
   <h1>Are you sure you want to delete the memory "{{memory.title}}"?</h1>
+
   <form method="post">
     {% csrf_token %}
     <input type="submit" value="Delete Memory"/>
     <a href="{% url 'memory_detail' memory.pk %}">Cancel</a>
-  
   </form>
 
 {% endblock content %}
