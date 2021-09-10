@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.views import View
 from django.http import HttpResponse
 from django.views.generic.base import TemplateView
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.detail import DetailView
 from django.urls import reverse
 
@@ -102,3 +102,9 @@ class JournalDetail(TemplateView):
     context = super().get_context_data(**kwargs)
     context["journal"] = Journal.objects.get(pk=kwargs["pk"])
     return context
+
+
+class MemoryDelete(DeleteView):
+  model = Memory
+  template_name = "memory_delete_confirmation.html"
+  success_url = "/journals/"
