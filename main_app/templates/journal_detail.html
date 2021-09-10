@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}{{journal.name}}{% endblock title %}
+
+{% block content %}
+
+<h1>This will be a show page for a specific journal.</h1>
+
+
+  <div class="journal_show_container">
+    <h2>{{journal.name}}</h2>
+    <h4>{{journal.birthdate}}</h4>
+    <h4>{{journal.total_memories}}</h4>
+  </div>
+
+  <div class="journal_memory_list_container">
+    <ul>
+    {% for memory in journal.memories.all %}
+      <li>
+        <div class="journal_memory_list">
+          <h4>{{memory.title}}</h4>
+          <p>{{memory.content}}</p>
+          {% if memory.photo %}
+          <img class="memory_photo" src="{{memory.photo.url}}" alt="{{memory.title}}">
+          {% else %}
+          {% endif %}
+        </div>
+      </li>
+    
+    
+    {% endfor %}
+    </ul>
+  </div>
+
+
+
+{% endblock content %}
+
