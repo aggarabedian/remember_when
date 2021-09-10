@@ -5,6 +5,8 @@
 {% block content %}
 
 <h1>This will be a show page for a specific journal.</h1>
+<a href="{% url 'memory_create' %}">Add A Memory</a>
+<br>
 <a href="{% url 'journal_delete' journal.pk %}">Delete Journal</a>
 
 

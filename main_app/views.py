@@ -96,8 +96,8 @@ class MemoryUpdate(UserPassesTestMixin, UpdateView):
   template_name = "memory_update.html"
 
   def test_func(self):
-    journal = get_object_or_404(Journal, pk = self.kwargs["pk"])
-    return self.request.user == journal.user
+    memory = get_object_or_404(Memory, pk = self.kwargs["pk"])
+    return self.request.user == memory.journal.user
     
   # def form_valid(self, form):
   #   form.instance.user = self.request.user
@@ -123,8 +123,8 @@ class MemoryDelete(UserPassesTestMixin, DeleteView):
   success_url = "/journals/"
 
   def test_func(self):
-    journal = get_object_or_404(Journal, pk = self.kwargs["pk"])
-    return self.request.user == journal.user
+    memory = get_object_or_404(Memory, pk = self.kwargs["pk"])
+    return self.request.user == memory.journal.user
 
 class JournalDelete(UserPassesTestMixin, DeleteView):
   model = Journal

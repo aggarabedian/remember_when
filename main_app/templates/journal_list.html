@@ -7,7 +7,7 @@
 
 {% for journal in journals %}
   <div class="journal_list">
-    <h2>{{journal.name}}</h2>
+    <h2><a href="{% url 'journal_detail' journal.pk %}">{{journal.name}}</a></h2>
     <div>
       {% for memory in journal.memories.all %}
         <h3>{{memory.title}}</h3>

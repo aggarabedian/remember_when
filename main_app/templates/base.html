@@ -30,6 +30,7 @@
     {% if user.is_authenticated %}
       <div class="navbar_right">
         <a href="{% url 'journal_create' %}">New Journal</a>
+        <a href="{% url 'journal_list' %}">My Journals</a>
         <a href="{% url 'logout' %}">Logout</a>
       </div>
     {% else %}
