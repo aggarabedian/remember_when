@@ -34,6 +34,7 @@ class PublicList(TemplateView):
     context["memories"] = Memory.objects.filter(is_public = True)
     return context
 
+@method_decorator(login_required, name='dispatch')
 class MemoryDetail(TemplateView):
   model = Memory
   template_name = "memory_detail.html"
@@ -43,7 +44,7 @@ class MemoryDetail(TemplateView):
     context["memory"] = Memory.objects.get(pk=kwargs["pk"])
     return context
 
-
+@method_decorator(login_required, name='dispatch')
 class JournalCreate(CreateView):
   model = Journal
   fields = ['name', 'birthdate']
@@ -76,7 +77,7 @@ class RegisterView(View):
       context = {"form": form}
       return render(request, "registration/register.html", context)
 
-
+@method_decorator(login_required, name='dispatch')
 class MemoryCreate(CreateView):
   model = Memory
   fields = ['title', 'content', 'is_public', 'photo', 'journal']
@@ -89,7 +90,7 @@ class MemoryCreate(CreateView):
   def get_success_url(self):
     return reverse("memory_detail", kwargs={'pk': self.object.pk})
 
-
+@method_decorator(login_required, name='dispatch')
 class MemoryUpdate(UserPassesTestMixin, UpdateView):
   model = Memory
   fields = ['title', 'content', 'is_public', 'photo']
@@ -107,16 +108,22 @@ class MemoryUpdate(UserPassesTestMixin, UpdateView):
     return reverse("memory_detail", kwargs={'pk': self.object.pk})
 
 
-class JournalDetail(TemplateView):
+@method_decorator(login_required, name='dispatch')
+class JournalDetail(UserPassesTestMixin, TemplateView):
   model = Journal
   template_name = "journal_detail.html"
 
+  def test_func(self):
+    journal = get_object_or_404(Journal, pk = self.kwargs["pk"])
+    return self.request.user == journal.user
+  
   def get_context_data(self, **kwargs):
     context = super().get_context_data(**kwargs)
     context["journal"] = Journal.objects.get(pk=kwargs["pk"])
     return context
 
 
+@method_decorator(login_required, name='dispatch')
 class MemoryDelete(UserPassesTestMixin, DeleteView):
   model = Memory
   template_name = "memory_delete_confirmation.html"
@@ -126,6 +133,7 @@ class MemoryDelete(UserPassesTestMixin, DeleteView):
     memory = get_object_or_404(Memory, pk = self.kwargs["pk"])
     return self.request.user == memory.journal.user
 
+@method_decorator(login_required, name='dispatch')
 class JournalDelete(UserPassesTestMixin, DeleteView):
   model = Journal
   template_name = "journal_delete_confirmation.html"
@@ -148,6 +156,7 @@ class JournalList(TemplateView):
     else:
       return redirect('/')
 
+@method_decorator(login_required, name='dispatch')
 class JournalUpdate(UserPassesTestMixin, UpdateView):
   model = Journal
   fields = ['name', 'birthdate']
