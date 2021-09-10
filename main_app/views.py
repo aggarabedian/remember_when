@@ -26,11 +26,11 @@ class About(TemplateView):
 
 
 class PublicList(TemplateView):
-  template_name = "journal_public.html"
+  template_name = "memories_public.html"
 
   def get_context_data(self, **kwargs):
     context = super().get_context_data(**kwargs)
-    context["journals"] = Journal.objects.all()
+    context["memories"] = Memory.objects.filter(is_public = True)
     return context
 
 class MemoryDetail(TemplateView):
