@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from django.views import View
 from django.http import HttpResponse
 from django.views.generic.base import TemplateView
@@ -9,6 +9,7 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+from django.contrib.auth.mixins import UserPassesTestMixin
 
 
 # Imports Models
@@ -89,14 +90,18 @@ class MemoryCreate(CreateView):
     return reverse("memory_detail", kwargs={'pk': self.object.pk})
 
 
-class MemoryUpdate(UpdateView):
+class MemoryUpdate(UserPassesTestMixin, UpdateView):
   model = Memory
   fields = ['title', 'content', 'is_public', 'photo']
   template_name = "memory_update.html"
-  
-  def form_valid(self, form):
-    form.instance.user = self.request.user
-    return super().form_valid(form)
+
+  def test_func(self):
+    journal = get_object_or_404(Journal, pk = self.kwargs["pk"])
+    return self.request.user == journal.user
+    
+  # def form_valid(self, form):
+  #   form.instance.user = self.request.user
+  #   return super().form_valid(form)
 
   def get_success_url(self):
     return reverse("memory_detail", kwargs={'pk': self.object.pk})
@@ -112,15 +117,23 @@ class JournalDetail(TemplateView):
     return context
 
 
-class MemoryDelete(DeleteView):
+class MemoryDelete(UserPassesTestMixin, DeleteView):
   model = Memory
   template_name = "memory_delete_confirmation.html"
   success_url = "/journals/"
 
-class JournalDelete(DeleteView):
+  def test_func(self):
+    journal = get_object_or_404(Journal, pk = self.kwargs["pk"])
+    return self.request.user == journal.user
+
+class JournalDelete(UserPassesTestMixin, DeleteView):
   model = Journal
   template_name = "journal_delete_confirmation.html"
   success_url = "/journals/"
+
+  def test_func(self):
+    journal = get_object_or_404(Journal, pk = self.kwargs["pk"])
+    return self.request.user == journal.user
 
 @method_decorator(login_required, name='dispatch')
 class JournalList(TemplateView):
@@ -134,3 +147,19 @@ class JournalList(TemplateView):
       return context
     else:
       return redirect('/')
+
+class JournalUpdate(UserPassesTestMixin, UpdateView):
+  model = Journal
+  fields = ['name', 'birthdate']
+  template_name = "journal_update.html"
+
+  def test_func(self):
+    journal = get_object_or_404(Journal, pk = self.kwargs["pk"])
+    return self.request.user == journal.user
+
+  # def form_valid(self, form):
+  #   form.instance.user = self.request.user
+  #   return super().form_valid(form)
+  
+  def get_success_url(self):
+    return reverse("journal_detail", kwargs={'pk': self.object.pk})
