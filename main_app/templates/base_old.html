@@ -1,0 +1,51 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% comment %} Main CSS {% endcomment %}
+  <link rel="stylesheet" href="{% static 'styles/main.css' %}">
+
+  {% comment %} Favicon {% endcomment %}
+  <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+  <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+
+  <title>Remember When - {% block title %}{% endblock title %}</title>
+</head>
+<body>
+
+
+  <nav class="navbar">
+    <div class="navbar_left">
+      <div class="navbar_logo_container">
+        <a class="navbar_logo" href="{% url 'home' %}">
+          <img src="{% static 'images/logo.png' %}" alt="logo">
+        </a>
+        <a href="{% url 'about' %}">About</a>
+        <a href="{% url 'public' %}">Public Memories</a>
+      </div>
+    {% if user.is_authenticated %}
+      <div class="navbar_right">
+        <a href="{% url 'journal_create' %}">New Journal</a>
+        <a href="{% url 'memory_create' %}">New Memory</a>
+        <a href="{% url 'journal_list' %}">My Journals</a>
+        <a href="{% url 'logout' %}">Logout</a>
+      </div>
+    {% else %}
+      <div class="navbar_right">
+        <a href="{% url 'register' %}">Register</a>
+        <a href="{% url 'login' %}">Login</a>
+      </div>
+    {% endif %}
+    </div>
+  </nav>
+    
+    
+    <div>
+      {% block content %}{% endblock content %}
+    </div>
+</body>
+</html>

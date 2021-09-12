@@ -1,4 +1,4 @@
-
+/* == Base == */
 
 body {
   background-color: seagreen;
@@ -6,36 +6,77 @@ body {
   padding: 0px;
 }
 
-.navbar {
+
+/* = Navbar = */
+.navbar_body {
+  position: sticky;
+  top: 0;
+  background-color: wheat;
+}
+
+.nav_container {
+  padding: 5px;
+  margin: 5px;
+  background-color: rgb(13, 126, 255);
+  display: flex;
+}
+
+.nav_container_left {
+  padding: 5px;
+  margin: 5px;
+  background-color: rgb(167, 197, 83);
+}
+
+.logo {
+  padding: 5px;
+  margin: 5px;
+  background-color: rgb(70, 142, 170);
+}
+
+.nav_left_link_container {
+  padding: 5px;
+  margin: 5px;
+  background-color: rgb(209, 106, 38);
+}
+
+.nav_left_link_container_about {
+  padding: 5px;
+  margin: 5px;
+  background-color: rgb(57, 180, 111);
+}
+
+.nav_left_link_container_public {
+  padding: 5px;
+  margin: 5px;
+  background-color: rgb(57, 180, 111);
+}
+
+.nav_container_right {
+  padding: 5px;
+  margin: 5px;
+  background-color: rgb(238, 71, 71);
+}
+
+.nav_right_link_logged_in {
+  padding: 5px;
+  margin: 5px;
+  background-color: rgb(174, 83, 197);
+}
+
+.nav_right_link_logged_out {
 
 }
 
-.navbar_grid {
-  display: grid;
-  background-color: rgb(15, 165, 175);
-  padding: 0.5rem;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-  gap: 1rem;
-}
 
-.navbar_logo_container {
-  display: grid;
-}
 
-.navbar_logo {
-  justify-self: start;
-  align-self: center;
 
-}
-
-.navbar_right {
-  align-self: center;
-  justify-self: end;
-}
+/* == Journal == */
 
 .journal_list {
   margin: 10px;
 }
+
+/* == Memory == */
 
 .memory_show_container {
   border: 2px dotted black;
