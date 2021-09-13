@@ -26,6 +26,11 @@
     $(".slider").slideToggle();
   });
 });
+    $(document).ready(function(){
+  $(".slider_clear").click(function(){
+    $(".slider").slideUp();
+  });
+});
   </script>
   <title>Remember When - {% block title %}{% endblock title %}</title>
 </head>
@@ -99,23 +104,28 @@
     <div class="slider">
       <form class="quick_form" method="POST" action="{% url 'memory_create' %}">
         {% csrf_token %}
-        <label for="memory_journals">Journal</label>
-        <select name="memories" id="memory_journals">
-        {% for journal in user.journals.all %}
-          <option value="{{journal.pk}}">{{journal.name}}</option>
-        {% empty %}
-          <option>No journals available</option>
-        {% endfor %}
-        </select>
-        <label for="memory_title">Title</label>
-        <input type="text" name="title" id="memory_title">
-        <label for="memory_image">Photo</label>
-        <input type="file" name="photo" id="memory_image">
-        <label for="memory_is_public">Is Public?</label>
-        <input type="checkbox" name="is_public" id="memory_is_public">
-        <label for="memory_content">Content</label>
-        <textarea name="content" id="memory_content" cols="30" rows="3"></textarea>
-        <input type="submit" value="Submit">
+        <div class="quick_form_left">
+          <label for="memory_title">Title</label>
+          <input type="text" name="title" id="memory_title">
+          <label for="memory_journals">Journal</label>
+          <select name="journal" id="memory_journals">
+          {% for journal in user.journals.all %}
+            <option value="{{journal.pk}}">{{journal.name}}</option>
+          {% empty %}
+            <option>No journals available</option>
+          {% endfor %}
+          </select>
+        </div>
+
+        <div class="quick_form_right">
+          <label for="memory_content">Content</label> <br>
+          <textarea name="content" id="memory_content" cols="50" rows="2"></textarea>
+          <br>
+          <label for="memory_is_public">Is Public?</label>
+          <input type="checkbox" name="is_public" id="memory_is_public">
+          <input type="submit" value="Submit"> <input class="slider_clear" type="reset" value="Cancel">
+        </div>
+
       </form>
     </div>
   </div>

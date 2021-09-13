@@ -77,18 +77,43 @@ class RegisterView(View):
       context = {"form": form}
       return render(request, "registration/register.html", context)
 
+
+# @method_decorator(login_required, name='dispatch')
+# class MemoryCreate(CreateView):
+#   model = Memory
+#   fields = ['title', 'content', 'is_public', 'photo', 'journal']
+#   template_name = "memory_create.html"
+  
+#   def form_valid(self, form):
+#     form.instance.user = self.request.user
+#     return super().form_valid(form)
+  
+#   def get_success_url(self):
+#     return reverse("memory_detail", kwargs={'pk': self.object.pk})
+
 @method_decorator(login_required, name='dispatch')
-class MemoryCreate(CreateView):
-  model = Memory
-  fields = ['title', 'content', 'is_public', 'photo', 'journal']
-  template_name = "memory_create.html"
-  
-  def form_valid(self, form):
-    form.instance.user = self.request.user
-    return super().form_valid(form)
-  
-  def get_success_url(self):
-    return reverse("memory_detail", kwargs={'pk': self.object.pk})
+class MemoryCreate(View):
+  def get(self, request):
+      context = {'journals': Journal.objects.all()}
+      return render(request, 'memory_create.html', context)
+
+  def post(self, request):
+    title = request.POST.get('title')
+    content = request.POST.get('content')
+    is_public = request.POST.get('is_public')
+    if is_public == 'on':
+      is_public = True
+    else:
+      is_public = False
+    
+    photo = request.FILES['photo']
+
+
+    journal = Journal.objects.get(pk=request.POST.get('journal'))
+    new_memory = Memory.objects.create(title=title, content=content, is_public=is_public, photo=photo, journal=journal)
+    return redirect('memory_detail', pk=new_memory.id)
+
+
 
 @method_decorator(login_required, name='dispatch')
 class MemoryUpdate(UserPassesTestMixin, UpdateView):

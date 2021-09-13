@@ -6,9 +6,24 @@
 
   <h1>New Memory Form</h1>
 
-  <form method="POST">
+  <form action="{% url 'memory_create' %}" method="POST">
     {% csrf_token %}
-    {{form.as_p}}
+    <label for="memory_journals">Journal</label>
+        <select name="journal" id="memory_journals">
+        {% for journal in user.journals.all %}
+          <option value="{{journal.pk}}">{{journal.name}}</option>
+        {% empty %}
+          <option>No journals available</option>
+        {% endfor %}
+        </select>
+        <label for="memory_title">Title</label>
+        <input type="text" name="title" id="memory_title">
+        <label for="memory_image">Photo</label>
+        <input type="file" name="photo" id="memory_image">
+        <label for="memory_is_public">Is Public?</label>
+        <input type="checkbox" name="is_public" id="memory_is_public">
+        <label for="memory_content">Content</label>
+        <textarea name="content" id="memory_content" cols="30" rows="10"></textarea>
     <input type="submit" value="Submit">
   </form>
 

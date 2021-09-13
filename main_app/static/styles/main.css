@@ -4,6 +4,11 @@ body {
   background-color: #F8F0DF;
   margin: 0px;
   padding: 0px;
+  font-family: 'Gentium Book Basic', serif;
+}
+
+body select {
+  font-family: 'Gentium Book Basic', serif;
 }
 
 .content {
@@ -44,9 +49,6 @@ a {
 
 }
 
-.logo {
-
-}
 
 .logo_link {
   text-decoration: none;
@@ -137,6 +139,7 @@ a {
   top: 155px;
   background-color: #81c2c5;
   padding: 5px;
+
   /* background-image: linear-gradient(#81c2c5, #F8F0DF); */
 }
 
@@ -154,7 +157,24 @@ a {
 
 .quick_form {
   padding: 20px;
+  display: flex;
 }
+
+.quick_form_left {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.quick_form_right {
+  padding: 10px;
+}
+
+.quick_form_right textarea#memory_content {
+  border-radius: 5px;
+}
+
+
 
 /* == Journal == */
 
