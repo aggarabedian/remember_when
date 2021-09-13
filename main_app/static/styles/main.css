@@ -1,73 +1,124 @@
 /* == Base == */
 
 body {
-  background-color: seagreen;
+  background-color: #F8F0DF;
   margin: 0px;
   padding: 0px;
 }
 
-
+.content {
+  padding: 10px;
+  font-family: 'Gentium Book Basic', serif;
+}
 /* = Navbar = */
 .navbar_body {
   position: sticky;
   top: 0;
-  background-color: wheat;
 }
 
 .nav_container {
-  padding: 5px;
-  margin: 5px;
-  background-color: rgb(13, 126, 255);
+  padding: 10px;
+  background-color: #81c2c5;
   display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Gentium Book Basic', serif;
+  height: auto;
 }
 
 .nav_container_left {
   padding: 5px;
   margin: 5px;
-  background-color: rgb(167, 197, 83);
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+
 }
 
 .logo {
-  padding: 5px;
-  margin: 5px;
-  background-color: rgb(70, 142, 170);
+
 }
 
+.logo_link {
+  text-decoration: none;
+}
+
+.logo_img {
+  font-family: 'Gentium Book Basic', serif;
+  text-decoration: none;
+  height: 80px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 10px;
+}
+
+
+
 .nav_left_link_container {
-  padding: 5px;
+  padding: 10px;
   margin: 5px;
-  background-color: rgb(209, 106, 38);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  border-radius: 10px;
+  gap: 20px;
 }
 
 .nav_left_link_container_about {
-  padding: 5px;
-  margin: 5px;
-  background-color: rgb(57, 180, 111);
+  padding: 10px;
+
+  background-color: #79B4B7;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 10px;
 }
 
 .nav_left_link_container_public {
-  padding: 5px;
-  margin: 5px;
-  background-color: rgb(57, 180, 111);
+  padding: 10px;
+
+  background-color: #79B4B7;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 10px;
 }
 
 .nav_container_right {
-  padding: 5px;
+  display: flex;
+}
+
+.nav_right_link_container {
+  padding: 10px;
   margin: 5px;
-  background-color: rgb(238, 71, 71);
+  display: flex;
+  border-radius: 10px;
+  gap: 20px;
 }
 
-.nav_right_link_logged_in {
-  padding: 5px;
-  margin: 5px;
-  background-color: rgb(174, 83, 197);
+.nav_right_link_container_journal_list {
+  padding: 10px;
+  background-color: #79B4B7;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 10px;
 }
 
-.nav_right_link_logged_out {
-
+.nav_right_link_container_logout {
+  padding: 10px;
+  background-color: #79B4B7;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 10px;
 }
 
+.nav_right_link_container_register {
+  padding: 10px;
+  background-color: #79B4B7;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 10px;
+}
 
+.nav_right_link_container_login {
+  padding: 10px;
+  background-color: #79B4B7;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 10px;
+}
 
 
 /* == Journal == */
