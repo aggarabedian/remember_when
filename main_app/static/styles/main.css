@@ -10,6 +10,12 @@ body {
   padding: 10px;
   font-family: 'Gentium Book Basic', serif;
 }
+
+a {
+  text-decoration: none;
+  color: #222;
+
+}
 /* = Navbar = */
 .navbar_body {
   position: sticky;
@@ -17,6 +23,7 @@ body {
 }
 
 .nav_container {
+  /* border-bottom: solid 1px grey; */
   padding: 10px;
   background-color: #81c2c5;
   display: flex;
@@ -25,6 +32,7 @@ body {
   align-items: center;
   font-family: 'Gentium Book Basic', serif;
   height: auto;
+
 }
 
 .nav_container_left {
@@ -97,6 +105,7 @@ body {
   background-color: #79B4B7;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 10px;
+  margin-left: -25px
 }
 
 .nav_right_link_container_logout {
@@ -120,6 +129,32 @@ body {
   border-radius: 10px;
 }
 
+
+/* == Slide Down == */
+
+.quick_memory_container {
+  position: sticky;
+  top: 155px;
+  background-color: #81c2c5;
+  padding: 5px;
+  /* background-image: linear-gradient(#81c2c5, #F8F0DF); */
+}
+
+.slider_div_button {
+  padding: 10px;
+  background-color: #79B4B7;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.slider {
+  display: none;
+}
+
+.quick_form {
+  padding: 20px;
+}
 
 /* == Journal == */
 
