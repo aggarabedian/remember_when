@@ -238,3 +238,15 @@ class AlbumCreate(CreateView):
   def form_valid(self, form):
     form.instance.user = self.request.user
     return super().form_valid(form)
+
+class AlbumUpdate(UserPassesTestMixin, UpdateView):
+  model = Album
+  fields = ['title', 'description']
+  template_name = "album_update.html"
+
+  def test_func(self):
+    album = get_object_or_404(Album, pk = self.kwargs["pk"])
+    return self.request.user == album.user
+
+  def get_success_url(self):
+    return reverse("album_detail", kwargs={'pk': self.object.pk})
