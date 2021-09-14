@@ -227,3 +227,14 @@ class AlbumDetail(TemplateView):
     context = super().get_context_data(**kwargs)
     context["album"] = Album.objects.get(pk=kwargs["pk"])
     return context
+
+
+class AlbumCreate(CreateView):
+  model = Album
+  fields = ['title', 'description']
+  template_name = "album_create.html"
+  success_url = "/albums/"
+
+  def form_valid(self, form):
+    form.instance.user = self.request.user
+    return super().form_valid(form)

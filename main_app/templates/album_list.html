@@ -6,7 +6,10 @@
 
 {% for album in user.albums.all %}
 
-{{album.title}}
+  <div class="album_list_container">
+    <a href="{% url 'album_detail' album.pk %}">{{album.title}}</a>
+  </div>
+
 
 {% endfor %}
 
