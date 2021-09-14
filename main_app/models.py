@@ -34,3 +34,31 @@ class Memory(Model):
 
   class Meta:
     ordering = ['created_at']
+
+class Album(Model):
+  title = CharField(max_length=200)
+  description = CharField(max_length=300)
+  created_at = DateTimeField(auto_now_add=True)
+  user = ForeignKey(User, on_delete=CASCADE, related_name='albums')
+
+  def __str__(self):
+    return self.title
+  
+  class Meta:
+    ordering = ['created_at']
+
+
+
+class Photo(Model):
+  picture = ImageField(upload_to='media/')
+  title = CharField(max_length=200)
+  description = CharField(max_length=300)
+  created_at = DateTimeField(auto_now_add=True)
+  is_public = BooleanField(default=False)
+  album = ForeignKey(Album, on_delete=CASCADE, related_name='photos')
+
+  def __str__(self):
+    return self.title
+
+  class Meta:
+    ordering = ['created_at']
