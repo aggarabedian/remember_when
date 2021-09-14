@@ -13,7 +13,7 @@ from django.contrib.auth.mixins import UserPassesTestMixin
 
 
 # Imports Models
-from .models import Journal, Memory
+from .models import Journal, Memory, Album, Photo
 from django.contrib.auth.models import User
 
 # Create your views here.
@@ -197,3 +197,15 @@ class JournalUpdate(UserPassesTestMixin, UpdateView):
   
   def get_success_url(self):
     return reverse("journal_detail", kwargs={'pk': self.object.pk})
+
+class AlbumList(TemplateView):
+  template_name = "album_list.html"
+
+  def get_context_data(self, **kwargs):
+    context = super().get_context_data(**kwargs)
+    user = self.request.user
+    if user != None:
+      context["albums"] = Album.objects.filter(user=self.request.user)
+      return context
+    else:
+      return redirect('/')
