@@ -48,14 +48,18 @@
               <img class="logo_img" src="{% static 'images/logo.png' %}" alt="logo">
             </a>
           </div>
-          <div class="nav_left_link_container_about">
-            <a href="{% url 'about' %}">About</a>
-          </div>
-          <div class="nav_left_link_container_public">
-            <a href="{% url 'public' %}">Public Memories</a>
-          </div>
-        </div>
+          <a href="{% url 'about' %}">
+            <div class="nav_left_link_container_about">
+              About
+            </div>
+          </a>
 
+          <a href="{% url 'public' %}">
+            <div class="nav_left_link_container_public">
+              Public&nbsp;Memories
+            </div>
+        </a>
+        </div>
       </div>
 
       <div class="nav_container_right">
@@ -64,9 +68,14 @@
         {% if user.is_authenticated %}
 
             <div class="nav_right_link_container">
+              <a href="{% url 'albums_list' %}">
+                <div class="nav_right_link_container_album_list">
+                  My&nbsp;Albums
+                </div>
+              </a>
               <a href="{% url 'journal_list' %}">
                 <div class="nav_right_link_container_journal_list">
-                  My Journals
+                  My&nbsp;Journals
                 </div>
               </a>
               <a href="{% url 'logout' %}">
@@ -135,5 +144,19 @@
   <div class="content">
     {% block content %}{% endblock content %}
   </div>
+  <footer>
+    <div class="footer_container">
+      <div class="footer_link_container">
+        <div class="footer_links">
+          <div class="footer_github">
+            <a href="https://github.com/aggarabedian">Github</a>
+          </div>
+          <div class="footer_linkedin">
+            <a href="https://www.linkedin.com/in/abraham-garabedian/">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
