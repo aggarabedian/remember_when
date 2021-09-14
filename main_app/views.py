@@ -250,3 +250,12 @@ class AlbumUpdate(UserPassesTestMixin, UpdateView):
 
   def get_success_url(self):
     return reverse("album_detail", kwargs={'pk': self.object.pk})
+
+class AlbumDelete(UserPassesTestMixin, DeleteView):
+  model = Album
+  template_name = "album_delete_confirmation.html"
+  success_url = "/albums/"
+
+  def test_func(self):
+    album = get_object_or_404(Album, pk = self.kwargs["pk"])
+    return self.request.user == album.user
