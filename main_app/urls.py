@@ -17,4 +17,5 @@ urlpatterns = [
   path('journals/<int:pk>/update/', views.JournalUpdate.as_view(), name='journal_update'),
   path('albums/', views.AlbumList.as_view(), name='albums_list'),
   path('photo/<int:pk>/', views.PhotoDetail.as_view(), name='photo_detail'),
+  path('albums/<int:pk>/', views.AlbumDetail.as_view(), name='album_detail'),
 ]

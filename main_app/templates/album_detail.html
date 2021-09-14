@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}{{album.title}}{% endblock title %}
+
+{% block content %}
+<div class="album_detail_container">
+  <h2>{{album.title}}</h2>
+  
+  {% for photo in album.photos.all %}
+  <div class="album_detail_photo_container">
+    <div class="album_detail_photo_card">
+      <h2>{{photo.title}}</h2>
+      <h6>{{photo.description}}</h6>
+      <img src="{{photo.picture.url}}" alt="">
+    </div>
+  </div>
+
+  {% endfor %}
+
+</div>
+
+{% endblock content %}

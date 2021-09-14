@@ -218,3 +218,12 @@ class PhotoDetail(TemplateView):
     context = super().get_context_data(**kwargs)
     context["photo"] = Photo.objects.get(pk=kwargs["pk"])
     return context
+
+class AlbumDetail(TemplateView):
+  model = Album
+  template_name = "album_detail.html"
+
+  def get_context_data(self, **kwargs):
+    context = super().get_context_data(**kwargs)
+    context["album"] = Album.objects.get(pk=kwargs["pk"])
+    return context
