@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Delete {{photo.title}}?{% endblock title %}
+
+{% block content %}
+
+  <h1>Are you sure you want to delete the photo "{{photo.title}}"?</h1>
+
+  <form method="post">
+    {% csrf_token %}
+    <input type="submit" value="Delete Photo"/>
+    <a href="{% url 'photo_detail' photo.pk %}">Cancel</a>
+  </form>
+
+{% endblock content %}

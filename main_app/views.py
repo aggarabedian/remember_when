@@ -279,3 +279,12 @@ class PhotoUpdate(UserPassesTestMixin, UpdateView):
 
   def get_success_url(self):
     return reverse("photo_detail", kwargs={'pk': self.object.pk})
+
+class PhotoDelete(UserPassesTestMixin, DeleteView):
+  model = Photo
+  template_name = "photo_delete_confirmation.html"
+  success_url = "/albums/"
+
+  def test_func(self):
+    photo = get_object_or_404(Photo, pk = self.kwargs["pk"])
+    return self.request.user == photo.album.user
