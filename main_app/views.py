@@ -209,3 +209,12 @@ class AlbumList(TemplateView):
       return context
     else:
       return redirect('/')
+
+class PhotoDetail(TemplateView):
+  model = Photo
+  template_name = "photo_detail.html"
+
+  def get_context_data(self, **kwargs):
+    context = super().get_context_data(**kwargs)
+    context["photo"] = Photo.objects.get(pk=kwargs["pk"])
+    return context
