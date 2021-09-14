@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import environ
-import os
 env = environ.Env()
 environ.Env.read_env()
 
@@ -42,7 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'main_app',
-    'storages',
 ]
 
 MIDDLEWARE = [
@@ -125,8 +123,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = 'media/'
 
 # AWS S3 Config
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'

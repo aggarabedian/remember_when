@@ -16,9 +16,10 @@ urlpatterns = [
   path('journals/', views.JournalList.as_view(), name='journal_list'),
   path('journals/<int:pk>/update/', views.JournalUpdate.as_view(), name='journal_update'),
   path('albums/', views.AlbumList.as_view(), name='albums_list'),
-  path('photo/<int:pk>/', views.PhotoDetail.as_view(), name='photo_detail'),
   path('albums/<int:pk>/', views.AlbumDetail.as_view(), name='album_detail'),
   path('albums/new/', views.AlbumCreate.as_view(), name='album_create'),
   path('albums/<int:pk>/update/', views.AlbumUpdate.as_view(), name='album_update'),
   path('albums/<int:pk>/delete/', views.AlbumDelete.as_view(), name='album_delete'),
+  path('photo/<int:pk>/', views.PhotoDetail.as_view(), name='photo_detail'),
+  path('photo/new/', views.PhotoCreate.as_view(), name='photo_create'),
 ]
