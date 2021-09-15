@@ -106,11 +106,11 @@ class MemoryCreate(View):
     else:
       is_public = False
     
-    photo = request.FILES['photo']
+    # photo = request.FILES['photo']
 
 
     journal = Journal.objects.get(pk=request.POST.get('journal'))
-    new_memory = Memory.objects.create(title=title, content=content, is_public=is_public, photo=photo, journal=journal)
+    new_memory = Memory.objects.create(title=title, content=content, is_public=is_public, journal=journal)
     return redirect('memory_detail', pk=new_memory.id)
 
 
@@ -152,11 +152,14 @@ class JournalDetail(UserPassesTestMixin, TemplateView):
 class MemoryDelete(UserPassesTestMixin, DeleteView):
   model = Memory
   template_name = "memory_delete_confirmation.html"
-  success_url = "/journals/"
+  # success_url = "/journals/"
 
   def test_func(self):
     memory = get_object_or_404(Memory, pk = self.kwargs["pk"])
     return self.request.user == memory.journal.user
+
+  def get_success_url(self):
+    return reverse("journal_detail", kwargs={'pk': self.object.journal.pk})
 
 @method_decorator(login_required, name='dispatch')
 class JournalDelete(UserPassesTestMixin, DeleteView):

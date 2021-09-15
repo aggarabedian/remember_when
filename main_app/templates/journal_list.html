@@ -1,25 +1,38 @@
 {% extends 'base.html' %}
 
-{% block title %}Journals{% endblock title %}
+{% block title %}{{user.username}}'s Journals{% endblock title %}
 
 {% block content %}
-<div class="journal_options">
-  <h2>{{user.username}}'s Journals</h2>
-</div>
 
+<div class="album_list_body">
 
-<div class="journal_list_container">
-  {% for journal in journals %}
-    <div class="journal_list_item">
-      <h2><a href="{% url 'journal_detail' journal.pk %}">{{journal.name}}</a></h2>
-      <div>
-        {% for memory in journal.memories.all %}
-          <h3>{{memory.title}}</h3>
-          <p>{{memory.content}}</p>
-        {% endfor %}
-      </div>
+  <div class="album_list_header_container">
+    <div class="album_list_header">
+      <h2>{{user.username}}'s Journals</h2>
     </div>
-  {% endfor %}
+      <a href="{% url 'journal_create' %}">
+        <div class="album_create_button">
+          New Journal
+        </div>
+      </a>
+  </div>
+
+
+  <div class="album_list_card_container">
+{% for journal in user.journals.all %}
+    <div class="album_list_card">
+      
+      <a href="{% url 'journal_detail' journal.pk %}">
+      <div class="album_list_container">
+        <h3>{{journal.name}}</h3>
+        <p>Birthdate - {{journal.birthdate}}</p>
+      </div>
+      </a>
+    </div>
+{% endfor %}
+  </div>
 </div>
+
+
 
 {% endblock content %}

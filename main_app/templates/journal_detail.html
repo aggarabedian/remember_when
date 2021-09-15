@@ -4,39 +4,40 @@
 
 {% block content %}
 
-<h1>This will be a show page for a specific journal.</h1>
-<a href="{% url 'memory_create' %}">Add A Memory</a>
-<br>
-<a href="{% url 'journal_update' journal.pk %}">Edit Journal</a>
-<br>
-<a href="{% url 'journal_delete' journal.pk %}">Delete Journal</a>
-
-
-  <div class="journal_show_container">
-    <h2>{{journal.name}}</h2>
-    <h4>{{journal.birthdate}}</h4>
+<div class="journal_detail_body">
+  <div class="journal_detail_header_container">
+    <div class="journal_detail_header_name">
+      <h2>{{journal.name}}</h2>
+    </div>
+    <a href="{% url 'memory_create' %}">
+      <div class="journal_detail_new_memory_button">
+        New Memory
+      </div>
+    </a>  
   </div>
-
-  <div class="journal_memory_list_container">
-    <ul>
+  <div class="journal_detail_card_container">
     {% for memory in journal.memories.all %}
-      <li>
-        <div class="journal_memory_list">
-          <a href="{% url 'memory_detail' memory.pk %}"><h4>{{memory.title}}</h4></a>
-          <p>{{memory.content}}</p>
-          {% if memory.photo %}
-          <img class="memory_photo" src="{{memory.photo.url}}" alt="{{memory.title}}">
-          {% else %}
-          {% endif %}
+    <div class="journal_detail_card">
+      
+      <div class="journal_detail_card_left">
+      
+        <div class="journal_detail_card_title">
+          <h3><a href="{% url 'memory_detail' memory.pk %}">{{memory.title}}</a></h3>
         </div>
-      </li>
-    
-    
+        <div class="journal_detail_card_created_at">
+          <p>{{memory.created_at}}</p>
+        </div>
+      </div>
+      
+      <div class="journal_detail_card_content">
+        <p>{{memory.content}}</p>
+      </div>
+
+    </div>
     {% endfor %}
-    </ul>
   </div>
+</div>
 
 
 
 {% endblock content %}
-

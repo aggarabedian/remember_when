@@ -27,6 +27,7 @@ a {
 .navbar_body {
   position: sticky;
   top: 0;
+  z-index: 1000;
 }
 
 .nav_container {
@@ -181,6 +182,7 @@ a {
   top: 155px;
   background-color: #81c2c5;
   padding: 5px;
+  z-index: 1000;
 
   /* background-image: linear-gradient(#81c2c5, #F8F0DF); */
 }
@@ -411,11 +413,66 @@ a {
   transform: scale(1.1);
 }
 
-/* == Journal == */
-
 .journal_list_item {
   margin: 10px;
 }
+
+/* == Journal Detail == */
+
+.journal_detail_body {
+  display: flex;
+  flex-direction: column;
+  border: solid black 1px;
+  padding: 10px;
+}
+
+.journal_detail_header_container {
+  border: solid black 1px;
+  margin: 10px;
+  padding: 10px;
+}
+
+.journal_detail_header_name {
+
+}
+
+.journal_detail_new_memory_button {
+
+}
+
+.journal_detail_card_container {
+  border: solid black 1px;
+  margin: 10px;
+  padding: 10px;
+
+}
+
+.journal_detail_card {
+  border: dotted black 1px;
+  margin: 10px;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+
+}
+
+.journal_detail_card_left {
+
+}
+
+.journal_detail_card_title {
+
+}
+
+.journal_detail_card_created_at {
+
+}
+
+.journal_detail_card_content {
+
+}
+
+
 
 /* == Memory == */
 
