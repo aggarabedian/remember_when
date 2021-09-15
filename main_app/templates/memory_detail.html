@@ -4,18 +4,34 @@
 
 {% block content %}
 
-<h1>This will be a show page for a specific memory.</h1>
+{% comment %} <div class="journal_detail_card_container"> {% endcomment %}
 
+    <div class="journal_detail_card">
+      
+      <div class="journal_detail_card_left">
+      
+        <div class="memory_detail_card_title">
+          <h3>{{memory.title}}</h3>
+          <p>{{memory.journal}}</p>
+        </div>
+        <div class="memory_detail_card_created_at">
 
-  <div class="memory_show_container">
-    <h2>{{memory.title}}</h2>
-    <p>{{memory.content}}</p>
-  </div>
-  <a href="{% url 'memory_update' memory.pk %}">Edit Memory</a>
-  <br>
-  <a href="{% url 'memory_delete' memory.pk %}">Delete Memory</a>
+          <p>{{memory.created_at}}</p>
+        </div>
+        <a href="{% url 'memory_update' memory.pk %}">
+        <div class="memory_edit_button">
+          Edit
+        </div>
+        </a>
+      </div>
+      
+      <div class="journal_detail_card_content">
+        <p>{{memory.content}}</p>
+      </div>
 
+    </div>
 
+  {% comment %} </div> {% endcomment %}
 
 {% endblock content %}
 

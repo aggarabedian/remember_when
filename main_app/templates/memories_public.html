@@ -1,18 +1,40 @@
 {% extends 'base.html' %}
 
-{% block title %}Public Memories{% endblock title %}
+{% block title %}{{journal.name}}{% endblock title %}
 
 {% block content %}
-<h1>Memories that have been shared by all users</h1>
 
-{% for memory in memories %}
-  <div class="memory_public_list">
-    <div>
-        <h3>{{memory.title}}</h3>
-        <h4>{{memory.journal.user.username}}</h4>
-        <p>{{memory.content}}</p>
+<div class="journal_detail_body">
+  <div class="journal_detail_header_container">
+    <div class="public_detail_header_name">
+      <h2>Have a look at the memories others have shared - and maybe share some of your own!</h2>
     </div>
+    {% comment %} <a href="{% url 'memory_create' %}">
+      <div class="journal_detail_new_memory_button">
+        New Memory
+      </div>
+    </a>   {% endcomment %}
   </div>
-{% endfor %}
+  <div class="journal_detail_card_container">
+    {% for memory in memories %}
+    <div class="journal_detail_card">
+      
+      <div class="journal_detail_card_left">
+      
+        <div class="public_detail_card_title">
+          <h3>{{memory.title}}</h3>
+        </div>
+        <div class="journal_detail_card_created_at">
+          <p>{{memory.journal.user.username}}</p>
+        </div>
+      </div>
+      
+      <div class="journal_detail_card_content">
+        <p>{{memory.content}}</p>
+      </div>
 
-{% endblock content %}
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

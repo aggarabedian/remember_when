@@ -118,7 +118,7 @@ class MemoryCreate(View):
 @method_decorator(login_required, name='dispatch')
 class MemoryUpdate(UserPassesTestMixin, UpdateView):
   model = Memory
-  fields = ['title', 'content', 'is_public', 'photo']
+  fields = ['title', 'content', 'is_public']
   template_name = "memory_update.html"
 
   def test_func(self):

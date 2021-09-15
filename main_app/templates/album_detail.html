@@ -14,10 +14,11 @@
     
     <div class="album_card">
       
-      <div class="album_card_image_container">
-        <img src="{{photo.picture.url}}" alt="{{photo.title}}">
-      </div>
-
+      <a href="{% url 'photo_detail' photo.pk %}">
+        <div class="album_card_image_container">
+          <img src="{{photo.picture.url}}" alt="{{photo.title}}">
+        </div>
+      </a>
       <div class="album_card_title">
         <h4>{{photo.title}}</h4>
       </div>

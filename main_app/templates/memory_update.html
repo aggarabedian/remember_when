@@ -12,4 +12,6 @@
     <input type="submit" value="Submit">
   </form>
 <a href="{% url 'memory_detail' memory.pk %}">Cancel</a>
+  <br>
+  <a href="{% url 'memory_delete' memory.pk %}">Delete Memory</a>
 {% endblock content %}
