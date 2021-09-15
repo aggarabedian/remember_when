@@ -1,6 +1,5 @@
 /* == Base == */
 
-
 body {
   background-color: #F8F0DF;
   margin: 0px;
@@ -24,6 +23,7 @@ a {
 }
 
 /* = Navbar = */
+
 .navbar_body {
   position: sticky;
   top: 0;
@@ -31,7 +31,6 @@ a {
 }
 
 .nav_container {
-  /* border-bottom: solid 1px grey; */
   padding: 10px;
   background-color: #81c2c5;
   display: flex;
@@ -40,7 +39,6 @@ a {
   align-items: center;
   font-family: 'Gentium Book Basic', serif;
   height: auto;
-
 }
 
 .nav_container_left {
@@ -49,9 +47,7 @@ a {
   display: flex;
   align-items: center;
   border-radius: 10px;
-
 }
-
 
 .logo_link {
   text-decoration: none;
@@ -64,8 +60,6 @@ a {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 10px;
 }
-
-
 
 .nav_left_link_container {
   padding: 10px;
@@ -193,7 +187,6 @@ a {
   cursor: pointer;
 }
 
-
 .slider {
   display: none;
 }
@@ -259,10 +252,6 @@ a {
 
 /* == Home Page == */
 
-.home_container {
-
-}
-
 .bg_image {
   margin: -10px;
 }
@@ -273,23 +262,17 @@ a {
 
 /* == Album List == */
 
-.album_list_body {
-
-}
-
 .album_list_header_container {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: flex-start;
   flex-direction: column;
-
 }
 
 .album_list_header {
   padding: 10px;
   margin-left: 30px;
-  
 }
 
 .album_create_button {
@@ -299,7 +282,6 @@ a {
   transition: all .2s ease-in-out;
   margin: 10px;
   margin-left: 30px;
-
 }
 
 .album_create_button:hover {
@@ -330,13 +312,7 @@ a {
 }
 
 
-
-
 /* == Album Detail == */
-
-.album_detail_container {
-
-}
 
 .album_header {
   margin-left: 30px;
@@ -349,7 +325,6 @@ a {
   grid-template-columns: repeat(1, 1fr);
   grid-template-rows: auto;
   justify-items: center;
-
   row-gap: 30px;
   column-gap: 10px;
 }
@@ -377,7 +352,6 @@ a {
   height: 280px;
   min-width: 280px;
   min-height: 280px;
-  /* background-color: rgb(247, 255, 254); */
   margin: 10px;
   border-radius: 7px;
   align-self: center;
@@ -394,11 +368,6 @@ a {
   align-self: flex-start;
   margin: -5px 10px;
 }
-
-/* .album_card_description {
-  border: solid black 1px;
-  padding: 10px;
-} */
 
 .album_card_buttons {
   padding: 10px 7px;
@@ -421,6 +390,7 @@ a {
   margin: 10px;
 }
 
+
 /* == Journal Detail == */
 
 .journal_detail_body {
@@ -430,7 +400,6 @@ a {
 }
 
 .journal_detail_header_container {
-
   margin: 10px;
   padding: 10px;
   background-color: rgb(243, 237, 225);
@@ -468,7 +437,6 @@ a {
   background-color: rgb(243, 237, 225);
   border-radius: 7px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
 }
 
 .journal_detail_card {
@@ -479,7 +447,6 @@ a {
   background-color: rgb(243, 237, 225);
   border-radius: 7px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
 }
 
 .journal_detail_card_left {
@@ -501,8 +468,8 @@ a {
 }
 
 .journal_detail_card_title:hover {
-    transform: scale(1.03);
-    color: #9D9D9D;
+  transform: scale(1.03);
+  color: #9D9D9D;
 }
 
 .journal_detail_card_created_at {
@@ -515,7 +482,6 @@ a {
   font-size: 1.1rem;
   line-height: 1.5em;
 }
-
 
 
 /* == Memory Detail == */
@@ -544,6 +510,65 @@ a {
 }
 
 
+/* == Photo Detail == */
+
+.photo_detail_body {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.photo_detail_card {
+  padding: 10px;
+  border-radius: 7px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+}
+
+.photo_detail_card_header {
+  padding: 10px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 3fr 1fr;
+  justify-content: space-between;
+}
+
+.photo_detail_card_header_title {
+  padding: 10px;
+}
+
+.photo_detail_card_header_description {
+  padding: 10px;
+}
+
+.photo_detail_card_image_container {
+  padding: 10px;
+}
+
+.photo_detail_card_image_holder img {
+  max-height: 100%;
+  max-width: 100%;
+  display: block;
+  margin: auto;
+  border-radius: 7px;
+}
+
+.photo_detail_update_button {
+  padding: 10px;
+  background-color: rgb(245, 240, 230);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 10px;
+  transition: all .2s ease-in-out;
+  width: fit-content;
+  margin-left: -5px;
+}
+
+.photo_detail_update_button:hover {
+  transform: scale(1.05);
+}
+
+
 /* == Media Queries == */
 
 @media (min-width: 650px) {
@@ -559,8 +584,3 @@ a {
 @media (min-width: 900px) {
   .album_card_container { grid-template-columns: repeat(3, 1fr); }
 }
-
-/* @media (min-width: 400px) {
-
-
-} */

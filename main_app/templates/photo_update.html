@@ -9,7 +9,8 @@
   {{form.as_p}}
 
   <input type="submit" value="Submit">
-<a href="javascript:history.back()">Cancel</a>
+<a href="javascript:history.back()"><button>Cancel</button></a>
+<a href="{% url 'photo_delete' photo.pk %}">Delete</a>
 
 </form>
 

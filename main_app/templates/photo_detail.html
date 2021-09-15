@@ -4,10 +4,40 @@
 
 {% block content %}
 
-<div class="photo_show_container">
-  <h2>{{photo.title}}</h2>
-  <h6>{{photo.description}}</h6>
-  <img src="{{photo.picture.url}}" alt="">
+<div class="photo_detail_body">
+  <div class="photo_detail_card">
+    <div class="photo_detail_card_header">
+      <div class="photo_detail_card_header_title">
+        <h2>{{photo.title}}</h2>
+        <p>{{photo.description}}</p>
+      </div>
+      <div class="photo_detail_card_header_description">
+        <p>Album - {{photo.album}}</p>
+        <p>{{photo.created_at}}</p>
+      <a href="{% url 'photo_update' photo.pk %}">
+        <div class="photo_detail_update_button">
+          Edit
+        </div>
+      </a>
+      </div>
+    </div>
+    <div class="photo_detail_card_image_container">
+      <div class="photo_detail_card_image_holder">
+        <img src="{{photo.picture.url}}" alt="{{photo.title}}">
+      </div>
+    </div>
+  </div>
 </div>
 
 {% endblock content %}
+
+
+
+
+
+
+<div class="photo_show_container">
+  <h2></h2>
+  <h6></h6>
+  <img src="" alt="">
+</div>
