@@ -3,20 +3,41 @@
 {% block title %}{{album.title}}{% endblock title %}
 
 {% block content %}
+
 <div class="album_detail_container">
-  <h2>{{album.title}}</h2>
-  
-  {% for photo in album.photos.all %}
-  <div class="album_detail_photo_container">
-    <div class="album_detail_photo_card">
-      <h2>{{photo.title}}</h2>
-      <h6>{{photo.description}}</h6>
-      <img src="{{photo.picture.url}}" alt="">
-    </div>
+  <div class="album_header">
+    <h2>{{user.username}}'s album '{{album.title}}'</h2>
   </div>
+  <a href="{% url 'photo_create' %}">Upload a Photo</a>
+  <div class="album_card_container">
+  {% for photo in album.photos.all %}
+    
+    <div class="album_card">
+      
+      <div class="album_card_image_container">
+        <img src="{{photo.picture.url}}" alt="{{photo.title}}">
+      </div>
 
+      <div class="album_card_title">
+        <h4>{{photo.title}}</h4>
+      </div>
+      
+      {% comment %} <div class="album_card_description">
+        <p>{{photo.description}}</p>
+        <p>{{photo.created_at}}</p>
+      </div> {% endcomment %}
+        
+      <div class="album_card_buttons">
+          <a href="{% url 'photo_update' photo.pk %}">
+            <div class="album_card_edit">
+              Edit
+            </div>
+        </a>
+      </div>
+    </div>
   {% endfor %}
-
+  </div>
 </div>
 
+  {% comment %} <a href="{% url 'photo_create' %}">Add a new photo</a> {% endcomment %}
 {% endblock content %}

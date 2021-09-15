@@ -4,13 +4,36 @@
 
 {% block content %}
 
-{% for album in user.albums.all %}
+<div class="album_list_body">
 
-  <div class="album_list_container">
-    <a href="{% url 'album_detail' album.pk %}">{{album.title}}</a>
+  <div class="album_list_header_container">
+    <div class="album_list_header">
+      <h2>{{user.username}}'s Photo Albums</h2>
+    </div>
+      <a href="{% url 'album_create' %}">
+        <div class="album_create_button">
+          New Album
+        </div>
+      </a>
   </div>
 
 
+  <div class="album_list_card_container">
+{% for album in user.albums.all %}
+    <div class="album_list_card">
+      
+      <a href="{% url 'album_detail' album.pk %}">
+      <div class="album_list_container">
+        <h3>{{album.title}}</h3>
+        <p>{{album.description}}</p>
+        <p>{{album.created_at}}</p>
+      </div>
+      </a>
+    </div>
 {% endfor %}
+  </div>
+</div>
+
+
 
 {% endblock content %}

@@ -3,18 +3,23 @@
 {% block title %}Journals{% endblock title %}
 
 {% block content %}
-<h1>This will be the journals for the signed in user page.</h1>
+<div class="journal_options">
+  <h2>{{user.username}}'s Journals</h2>
+</div>
 
-{% for journal in journals %}
-  <div class="journal_list">
-    <h2><a href="{% url 'journal_detail' journal.pk %}">{{journal.name}}</a></h2>
-    <div>
-      {% for memory in journal.memories.all %}
-        <h3>{{memory.title}}</h3>
-        <p>{{memory.content}}</p>
-      {% endfor %}
+
+<div class="journal_list_container">
+  {% for journal in journals %}
+    <div class="journal_list_item">
+      <h2><a href="{% url 'journal_detail' journal.pk %}">{{journal.name}}</a></h2>
+      <div>
+        {% for memory in journal.memories.all %}
+          <h3>{{memory.title}}</h3>
+          <p>{{memory.content}}</p>
+        {% endfor %}
+      </div>
     </div>
-  </div>
-{% endfor %}
+  {% endfor %}
+</div>
 
 {% endblock content %}
