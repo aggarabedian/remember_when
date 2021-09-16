@@ -11,7 +11,7 @@
     </div>
   </div>
   <div class="form_container">
-    <form enctype="multipart/form-data" action="{% url 'photo_create' %}" method="POST">
+    <form class="form_form" enctype="multipart/form-data" action="{% url 'photo_create' %}" method="POST">
       {% csrf_token %}
       <label for="photo_albums">Album</label>
           <select name="album" id="photo_albums">
@@ -28,8 +28,11 @@
           <label for="photo_description">Description</label>
           <input type="text" name="description" id="photo_description">
           <label for="photo_image">Image</label>
-          <input type="file" name="picture" id="photo_image">
-      <input type="submit" value="Submit">
+          <input class="form_image_button" type="file" name="picture" id="photo_image">
+          <div class="form_buttons">
+            <input class="form_submit" type="submit" value="Submit"> 
+            <input class="form_cancel" type="button" value="Cancel" onclick="history.back()">
+          </div>
     </form>
   </div>
 

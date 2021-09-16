@@ -650,7 +650,12 @@ a {
 /* == Custom Form == */
 
 .form_body {
-
+  padding: 10px 10px 0 10px;
+  display: flex;
+  flex-direction: column;
+  margin: 10px 10px 0 10px;
+  border-radius: 7px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .form_header_container {
@@ -658,7 +663,7 @@ a {
 }
 
 .form_header_title {
-
+  padding-left: 10px;
 }
 
 .form_container {
@@ -666,8 +671,108 @@ a {
 }
 
 .form_form {
-
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  width: 40vw;
 }
+
+.form_form label {
+  padding: 5px;
+  margin-top: 5px;
+}
+
+.form_form input[type=file]::file-selector-button {
+  padding: 10px;
+  background-color: rgb(245, 240, 230);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 7px;
+  transition: all .2s ease-in-out;
+  width:fit-content;
+  margin: 5px 10px 5px 5px;
+  border: none;
+}
+
+.form_form input[type=file]::file-selector-button:hover {
+  transform: scale(1.1);
+}
+
+.form_buttons {
+  margin-top: 5px;
+}
+
+.form_submit {
+  padding: 10px;
+  background-color: rgb(245, 240, 230);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 7px;
+  transition: all .2s ease-in-out;
+  width:fit-content;
+  margin: 5px;
+  border: none;
+}
+
+.form_submit:hover {
+  transform: scale(1.1);
+}
+/* .form_submit {
+  width: fit-content;
+  margin-top: 10px;
+  padding: 5px;
+} */
+
+.form_cancel {
+  padding: 10px;
+  background-color: rgb(245, 240, 230);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 7px;
+  transition: all .2s ease-in-out;
+  width:fit-content;
+  margin: 5px;
+  border: none;
+}
+
+.form_cancel:hover {
+  transform: scale(1.1);
+}
+
+/* .form_cancel {
+  width: fit-content;
+  margin-top: 10px;
+} */
+
+/* == Modal == */
+
+/* .overlay {
+  position: fixed;
+  top: 20%;
+  left: 20%;
+  right: 20%;
+  bottom: 20%;
+  height: auto;
+  width: auto;
+  z-index: 10000;
+  background-color: rgba(157, 157, 157, 0.5);
+  backdrop-filter: blur(10px);
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+.modal {
+  padding: 20px;
+  background-color: #e2d8c1;
+  border-radius: 7px;
+  width: 85%;
+  height: 70%;
+}
+
+.modal_content {
+  
+} */
 
 
 /* == Media Queries == */
