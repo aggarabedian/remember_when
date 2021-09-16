@@ -1,1 +1,1 @@
-web: gunicorn remember-when-628.wsgi
+web: gunicorn remember-when.wsgi
