@@ -12,7 +12,7 @@
         <p>{{photo.description}}</p>
       </div>
       <div class="photo_detail_card_header_description">
-        <p>Album - {{photo.album}}</p>
+        <p>Album - <a href="{% url 'album_detail' photo.album.pk %}">{{photo.album}}</a></p>
         <p>{{photo.created_at}}</p>
       <a href="{% url 'photo_update' photo.pk %}">
         <div class="photo_detail_update_button">

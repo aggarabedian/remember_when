@@ -308,6 +308,7 @@ a {
   padding: 10px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 7px;
+  background-color: #ebddbf;
   /* backdrop-filter: blur(10px); */
 }
 
@@ -364,7 +365,7 @@ a {
 
 .album_list_card_container {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr; 
   grid-template-rows: auto;
   gap: 10px;
 }
@@ -394,18 +395,21 @@ a {
 
 .album_card_container {
   display: grid;
-  padding: 20px;
+  padding: 50px 0;
   margin: 20px;
   grid-template-columns: repeat(1, 1fr);
   grid-template-rows: auto;
   justify-items: center;
   row-gap: 30px;
   column-gap: 10px;
+  background-color: #ebddbf;
+  border-radius: 7px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .album_card {
-  width: 300px;
-  height: 400px;
+  max-width: 300px;
+  max-height: 400px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -422,10 +426,10 @@ a {
 }
 
 .album_card_image_container {
-  width: 280px;
-  height: 280px;
-  min-width: 280px;
-  min-height: 280px;
+  width: 210px;
+  height: 210px;
+  max-width: 280px;
+  max-height: 280px;
   margin: 10px;
   border-radius: 7px;
   align-self: center;
@@ -476,7 +480,7 @@ a {
 .journal_detail_header_container {
   margin: 10px;
   padding: 10px;
-  background-color: rgb(243, 237, 225);
+  background-color: #ebddbf;
   border-radius: 7px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   display: flex;
@@ -508,7 +512,7 @@ a {
 .journal_detail_card_container {
   margin: 10px;
   padding: 10px;
-  background-color: rgb(243, 237, 225);
+  background-color: #ebddbf;
   border-radius: 7px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
@@ -667,6 +671,19 @@ a {
 
 
 /* == Media Queries == */
+@media (min-width: 750px) {
+  .album_card_container { 
+    grid-template-columns: 1fr 1fr; 
+  }
+}
+@media (min-width:1050px) {
+  .album_card_container { 
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 0;
+  }
+}
+
+
 
 @media (min-width: 650px) {
   .quick_form {
@@ -675,16 +692,12 @@ a {
   .quick_form_right textarea#memory_content {
     width: auto;
   }
-  .album_card_container { grid-template-columns: repeat(2, 1fr); }
 }
 
-@media (min-width: 900px) {
-  .album_card_container { grid-template-columns: repeat(3, 1fr); }
-}
-
-@media (min-width: 745px) {
-  .hero_text {
-    /* margin: 100px; */
+@media (min-width: 450px) {
+  .album_card_image_container {
+    width: 280px;
+    height: 280px;
   }
 }
 
@@ -696,8 +709,30 @@ a {
   }
 }
 
-/* @media (min-width: 615px) {
-  .footer_container {
-    margin-top: -10px;
+@media (max-width: 900px) {
+  .album_list_card_container {
+    /* display: grid; */
+    grid-template-columns: 1fr 1fr 1fr;
+    /* grid-template-rows: auto;
+    gap: 10px; */
   }
-} */
+}
+
+@media (max-width: 650px) {
+  .album_list_card_container {
+    /* display: grid; */
+    grid-template-columns: 1fr 1fr;
+    /* grid-template-rows: auto;
+    gap: 10px; */
+  }
+}
+
+@media (max-width: 500px) {
+  .album_list_card_container {
+    /* display: grid; */
+    grid-template-columns: 1fr;
+    /* grid-template-rows: auto;
+    gap: 10px; */
+  }
+}
+

@@ -12,7 +12,7 @@
       
         <div class="memory_detail_card_title">
           <h3>{{memory.title}}</h3>
-          <p>{{memory.journal}}</p>
+          <p>Journal - <a href="{% url 'journal_detail' memory.journal.pk %}">{{memory.journal}}</a></p>
         </div>
         <div class="memory_detail_card_created_at">
 
