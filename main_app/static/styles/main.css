@@ -675,11 +675,20 @@ a {
   display: flex;
   flex-direction: column;
   width: 40vw;
+  font-size: 1.3rem;
 }
 
 .form_form label {
   padding: 5px;
   margin-top: 5px;
+}
+
+.form_form input {
+  font-size: 1.3rem;
+}
+
+.form_form select {
+  font-size: 1.3rem;
 }
 
 .form_form input[type=file]::file-selector-button {
