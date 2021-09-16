@@ -71,7 +71,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'remember-when-628.wsgi.application'
+WSGI_APPLICATION = 'remember-when.wsgi.application'
 
 
 # Database
