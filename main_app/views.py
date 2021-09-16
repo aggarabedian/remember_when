@@ -34,6 +34,7 @@ class PublicList(TemplateView):
     context["memories"] = Memory.objects.filter(is_public = True)
     return context
 
+
 @method_decorator(login_required, name='dispatch')
 class MemoryDetail(TemplateView):
   model = Memory
@@ -43,6 +44,7 @@ class MemoryDetail(TemplateView):
     context = super().get_context_data(**kwargs)
     context["memory"] = Memory.objects.get(pk=kwargs["pk"])
     return context
+
 
 @method_decorator(login_required, name='dispatch')
 class JournalCreate(CreateView):
@@ -54,14 +56,9 @@ class JournalCreate(CreateView):
   def form_valid(self, form):
     form.instance.user = self.request.user
     return super().form_valid(form)
-  
-  # Add redirect to users journals
-  # def get_success_url(self):
-  #   return reverse("")
 
 
 class RegisterView(View):
-  
   def get(self, request):
     form = UserCreationForm()
     context = {"form": form}
@@ -78,19 +75,6 @@ class RegisterView(View):
       return render(request, "registration/register.html", context)
 
 
-# @method_decorator(login_required, name='dispatch')
-# class MemoryCreate(CreateView):
-#   model = Memory
-#   fields = ['title', 'content', 'is_public', 'photo', 'journal']
-#   template_name = "memory_create.html"
-  
-#   def form_valid(self, form):
-#     form.instance.user = self.request.user
-#     return super().form_valid(form)
-  
-#   def get_success_url(self):
-#     return reverse("memory_detail", kwargs={'pk': self.object.pk})
-
 @method_decorator(login_required, name='dispatch')
 class MemoryCreate(View):
   def get(self, request):
@@ -105,14 +89,9 @@ class MemoryCreate(View):
       is_public = True
     else:
       is_public = False
-    
-    # photo = request.FILES['photo']
-
-
     journal = Journal.objects.get(pk=request.POST.get('journal'))
     new_memory = Memory.objects.create(title=title, content=content, is_public=is_public, journal=journal)
     return redirect('memory_detail', pk=new_memory.id)
-
 
 
 @method_decorator(login_required, name='dispatch')
@@ -124,10 +103,6 @@ class MemoryUpdate(UserPassesTestMixin, UpdateView):
   def test_func(self):
     memory = get_object_or_404(Memory, pk = self.kwargs["pk"])
     return self.request.user == memory.journal.user
-    
-  # def form_valid(self, form):
-  #   form.instance.user = self.request.user
-  #   return super().form_valid(form)
 
   def get_success_url(self):
     return reverse("memory_detail", kwargs={'pk': self.object.pk})
@@ -152,7 +127,6 @@ class JournalDetail(UserPassesTestMixin, TemplateView):
 class MemoryDelete(UserPassesTestMixin, DeleteView):
   model = Memory
   template_name = "memory_delete_confirmation.html"
-  # success_url = "/journals/"
 
   def test_func(self):
     memory = get_object_or_404(Memory, pk = self.kwargs["pk"])
@@ -193,14 +167,11 @@ class JournalUpdate(UserPassesTestMixin, UpdateView):
   def test_func(self):
     journal = get_object_or_404(Journal, pk = self.kwargs["pk"])
     return self.request.user == journal.user
-
-  # def form_valid(self, form):
-  #   form.instance.user = self.request.user
-  #   return super().form_valid(form)
   
   def get_success_url(self):
     return reverse("journal_detail", kwargs={'pk': self.object.pk})
 
+@method_decorator(login_required, name='dispatch')
 class AlbumList(TemplateView):
   template_name = "album_list.html"
 
@@ -213,6 +184,7 @@ class AlbumList(TemplateView):
     else:
       return redirect('/')
 
+@method_decorator(login_required, name='dispatch')
 class PhotoDetail(TemplateView):
   model = Photo
   template_name = "photo_detail.html"
@@ -222,6 +194,7 @@ class PhotoDetail(TemplateView):
     context["photo"] = Photo.objects.get(pk=kwargs["pk"])
     return context
 
+@method_decorator(login_required, name='dispatch')
 class AlbumDetail(TemplateView):
   model = Album
   template_name = "album_detail.html"
@@ -231,7 +204,7 @@ class AlbumDetail(TemplateView):
     context["album"] = Album.objects.get(pk=kwargs["pk"])
     return context
 
-
+@method_decorator(login_required, name='dispatch')
 class AlbumCreate(CreateView):
   model = Album
   fields = ['title', 'description']
@@ -242,6 +215,7 @@ class AlbumCreate(CreateView):
     form.instance.user = self.request.user
     return super().form_valid(form)
 
+@method_decorator(login_required, name='dispatch')
 class AlbumUpdate(UserPassesTestMixin, UpdateView):
   model = Album
   fields = ['title', 'description']
@@ -254,6 +228,7 @@ class AlbumUpdate(UserPassesTestMixin, UpdateView):
   def get_success_url(self):
     return reverse("album_detail", kwargs={'pk': self.object.pk})
 
+@method_decorator(login_required, name='dispatch')
 class AlbumDelete(UserPassesTestMixin, DeleteView):
   model = Album
   template_name = "album_delete_confirmation.html"
@@ -263,14 +238,37 @@ class AlbumDelete(UserPassesTestMixin, DeleteView):
     album = get_object_or_404(Album, pk = self.kwargs["pk"])
     return self.request.user == album.user
 
-class PhotoCreate(CreateView):
-  model = Photo
-  fields = ['album', 'title', 'description', 'is_public', 'picture']
-  template_name = "photo_create.html"
-  
-  def get_success_url(self):
-    return reverse("photo_detail", kwargs={'pk': self.object.pk})
+# @method_decorator(login_required, name='dispatch')
+# class PhotoCreate(CreateView):
+#   model = Photo
+#   fields = ['album', 'title', 'description', 'is_public', 'picture']
+#   template_name = "photo_create.html"
 
+#   def get_success_url(self):
+#     return reverse("photo_detail", kwargs={'pk': self.object.pk})
+
+@method_decorator(login_required, name='dispatch')
+class PhotoCreate(View):
+  def get(self, request):
+    context = {'albums': Album.objects.all()}
+    return render(request, 'photo_create.html', context)
+
+  def post(self, request):
+    picture = request.FILES.get('picture')
+    title = request.POST.get('title')
+    description = request.POST.get('description')
+    is_public = request.POST.get('is_public')
+    if is_public == 'on':
+      is_public = True
+    else:
+      is_public = False
+    album = Album.objects.get(pk=request.POST.get('album'))
+    new_photo = Photo.objects.create(picture=picture, title=title, description=description, is_public=is_public, album=album)
+    return redirect('photo_detail', pk=new_photo.id)
+
+
+
+@method_decorator(login_required, name='dispatch')
 class PhotoUpdate(UserPassesTestMixin, UpdateView):
   model = Photo
   fields = ['album', 'title', 'description', 'is_public', 'picture']
@@ -283,6 +281,7 @@ class PhotoUpdate(UserPassesTestMixin, UpdateView):
   def get_success_url(self):
     return reverse("photo_detail", kwargs={'pk': self.object.pk})
 
+@method_decorator(login_required, name='dispatch')
 class PhotoDelete(UserPassesTestMixin, DeleteView):
   model = Photo
   template_name = "photo_delete_confirmation.html"

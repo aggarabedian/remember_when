@@ -283,6 +283,7 @@ a {
   border-radius: 7px;
   color: #030303;
   backdrop-filter: blur(10px);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .hero_indent {
@@ -603,6 +604,29 @@ a {
 
 .photo_detail_update_button:hover {
   transform: scale(1.05);
+}
+
+
+/* == Custom Form == */
+
+.form_body {
+
+}
+
+.form_header_container {
+
+}
+
+.form_header_title {
+
+}
+
+.form_container {
+
+}
+
+.form_form {
+
 }
 
 
