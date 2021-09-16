@@ -297,6 +297,42 @@ a {
 }
 
 
+/* == About == */
+
+.about_body {
+  /* background-image: url(../../static/images/bg.jpg); */
+}
+
+.about_container {
+  margin: 30px;
+  padding: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 7px;
+  /* backdrop-filter: blur(10px); */
+}
+
+.about_title {
+  padding: 10px;
+  text-indent: 2em;
+  font-size: 1.5em;
+}
+
+.about_content {
+  padding: 0 20px 80px 20px;
+  text-indent: 2em;
+  font-size: 1.5em;
+  line-height: 2em;
+}
+
+.about_rw {
+  text-decoration: underline;
+}
+
+.about_rw_small {
+  text-decoration: underline;
+  font-size: 1.6em;
+}
+
 
 /* == Album List == */
 
