@@ -23,10 +23,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'c2=dkp0!6xml6_l9_)c^+a(ev1(&3!rsmovf4p%()wz!j#_a8y'
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env('DEBUG')
 
 ALLOWED_HOSTS = []
 
@@ -71,7 +71,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'remember_when.wsgi.application'
+WSGI_APPLICATION = 'remember-when-628.wsgi.application'
 
 
 # Database
@@ -134,3 +134,6 @@ AWS_S3_FILE_OVERWRITE = False
 
 LOGIN_REDIRECT_URL = '/journals/'
 LOGOUT_REDIRECT_URL = '/'
+
+import django_heroku
+django_heroku.settings(locals())
