@@ -4,16 +4,16 @@ body {
   background-color: #F8F0DF;
   margin: 0px;
   padding: 0px;
+  font-size: 1.2rem;
   font-family: 'Gentium Book Basic', serif;
+  letter-spacing: .07rem;
 }
 
 body select {
-  font-family: 'Gentium Book Basic', serif;
 }
 
 .content {
   padding: 10px;
-  font-family: 'Gentium Book Basic', serif;
   min-height: calc(100vh - 80px);
 }
 
@@ -37,7 +37,6 @@ a {
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  font-family: 'Gentium Book Basic', serif;
   height: auto;
 }
 
@@ -54,7 +53,6 @@ a {
 }
 
 .logo_img {
-  font-family: 'Gentium Book Basic', serif;
   text-decoration: none;
   height: 80px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -203,14 +201,29 @@ a {
   padding: 10px;
 }
 
+.quick_form_left input, select{
+font-size: 1.3rem;
+border-radius: 7px;
+background-color: #FEFBF3;
+border: none;
+}
+
 .quick_form_right {
   padding: 10px;
 }
 
-.quick_form_right textarea#memory_content {
+.quick_form_right textarea {
+  font-size: 1.3rem;
+  border-radius: 7px;
+  width: 80vw;
+  background-color: #FEFBF3;
+  border: none;
+  }
+
+/* .quick_form_right textarea#memory_content {
   border-radius: 5px;
   width: 80vw;
-}
+} */
 
 
 /* == Footer == */
@@ -286,6 +299,10 @@ a {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+.hero_text h1 {
+  font-style: italic;
+}
+
 .hero_indent {
   text-indent: 5rem;
   padding: 5px;
@@ -326,12 +343,13 @@ a {
 }
 
 .about_rw {
-  text-decoration: underline;
+  font-style: italic;
 }
 
 .about_rw_small {
-  text-decoration: underline;
+  font-style: italic;
   font-size: 1.6em;
+  padding-right: 10px;
 }
 
 
@@ -389,8 +407,75 @@ a {
 
 /* == Album Detail == */
 
+.album_detail_container {
+}
+
+/* .album_header {
+  margin: 20px;
+  padding: 0 0 20px 20px;
+  background-color: #ebddbf;
+  border-radius: 7px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+} */
+
 .album_header {
-  margin-left: 30px;
+  margin: 20px;
+  padding: 10px;
+  background-color: #ebddbf;
+  border-radius: 7px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  display: flex;
+  flex-direction: column;
+}
+
+.album_header_title {
+  margin-left: 10px;
+}
+
+.album_detail_top_buttons {
+  padding-bottom: 20px;
+}
+
+.new_photo {
+  padding: 10px;
+  background-color: rgb(245, 240, 230);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 10px;
+  transition: all .2s ease-in-out;
+  width: fit-content;
+  margin-right: 5px;
+}
+
+.new_photo:hover {
+  transform: scale(1.05);
+}
+
+.delete_journal {
+  padding: 10px;
+  background-color: rgb(245, 240, 230);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 10px;
+  transition: all .2s ease-in-out;
+  width: fit-content;
+  margin-left: 10px;
+}
+
+.delete_journal:hover {
+  transform: scale(1.1);
+}
+
+.delete_album {
+  padding: 10px;
+  background-color: rgb(245, 240, 230);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 10px;
+  transition: all .2s ease-in-out;
+  width: fit-content;
+  
+}
+
+.delete_album:hover {
+  transform: scale(1.05);
 }
 
 .album_card_container {
@@ -448,7 +533,7 @@ a {
 }
 
 .album_card_buttons {
-  padding: 10px 7px;
+  padding: 0 7px;
   align-self: flex-start;
 }
 
@@ -458,6 +543,7 @@ a {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 10px;
   transition: all .2s ease-in-out;
+  margin-bottom: 10px;
 }
 
 .album_card_edit:hover {
@@ -656,10 +742,11 @@ a {
   margin: 10px 10px 0 10px;
   border-radius: 7px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  width: fit-content;
 }
 
 .form_header_container {
-
+  width: 600px;
 }
 
 .form_header_title {
@@ -668,28 +755,51 @@ a {
 
 .form_container {
 
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+
+
 }
 
 .form_form {
   padding: 10px;
   display: flex;
   flex-direction: column;
-  width: 40vw;
+  width: 90%;
+  margin: 10px;
   font-size: 1.3rem;
 }
+
+.form_pad {
+
+}
+
+.form_checkbox {
+  padding: 5px;
+  margin-top: 5px;
+}
+
+.form_form input, select{
+  font-size: 1.3rem;
+  border-radius: 7px;
+  background-color: #FEFBF3;
+  border: none;
+  }
+  
 
 .form_form label {
   padding: 5px;
   margin-top: 5px;
 }
 
-.form_form input {
+/* .form_form input {
   font-size: 1.3rem;
 }
 
 .form_form select {
   font-size: 1.3rem;
-}
+} */
 
 .form_form input[type=file]::file-selector-button {
   padding: 10px;
@@ -782,6 +892,16 @@ a {
 .modal_content {
   
 } */
+
+.create_form {
+  padding: 10px;
+}
+
+.create_form input, label {
+  font-size: 1.3rem;
+  padding: 5px;
+  border-radius: 7px;
+}
 
 
 /* == Media Queries == */

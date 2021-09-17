@@ -7,7 +7,7 @@
 <div class="form_body">
   <div class="form_header_container">
     <div class="form_header_title">
-      <h1>New Photo</h1>
+      <h3>New Photo</h3>
     </div>
   </div>
   <div class="form_container">
@@ -23,24 +23,20 @@
           </select>
           <label for="photo_title">Title</label>
           <input type="text" name="title" id="photo_title">
-          <label for="photo_is_public">Is Public?</label>
-          <input type="checkbox" name="is_public" id="photo_is_public">
           <label for="photo_description">Description</label>
           <input type="text" name="description" id="photo_description">
           <label for="photo_image">Image</label>
           <input class="form_image_button" type="file" name="picture" id="photo_image">
+          <div class="form_checkbox">
+          <label for="photo_is_public">Is Public</label>
+          <input type="checkbox" name="is_public" id="photo_is_public">
+          </div>
           <div class="form_buttons">
             <input class="form_submit" type="submit" value="Submit"> 
             <input class="form_cancel" type="button" value="Cancel" onclick="history.back()">
           </div>
     </form>
+    <div class="form_pad"></div>
   </div>
-
-
-
-
 </div>
-
-
-
 {% endblock content %}

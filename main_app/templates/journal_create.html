@@ -4,13 +4,17 @@
 
 {% block content %}
 
-<form method="POST">
+<div class="form_body">
+  <div class="form_header_container">
+    <h2>New Journal</h2>
+  </div>
+<form class="create_form" method="POST">
   {% csrf_token %}
   {{form.as_p}}
-
   <input type="submit" value="Submit">
-
 </form>
+
+</div>
 
 
 {% endblock content %}

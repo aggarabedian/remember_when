@@ -6,9 +6,12 @@
 
 <div class="album_detail_container">
   <div class="album_header">
-    <h2>{{user.username}}'s album '{{album.title}}'</h2>
+    <h2 class="album_header_title">Album - {{album.title}}'</h2>
+  <div class="album_detail_top_buttons">
+  <a class="new_photo"href="{% url 'photo_create' %}">New Photo</a>
+  <a class="delete_album"href="{% url 'album_delete' album.pk %}">Delete Album</a>
   </div>
-  <a href="{% url 'photo_create' %}">Upload a Photo</a>
+  </div>
   <div class="album_card_container">
   {% for photo in album.photos.all %}
     

@@ -9,11 +9,12 @@
     <div class="journal_detail_header_name">
       <h2>{{journal.name}}</h2>
     </div>
-    <a href="{% url 'memory_create' %}">
-      <div class="journal_detail_new_memory_button">
-        New Memory
-      </div>
-    </a>  
+    <div class="album_detail_top_buttons">
+    <a class="journal_detail_new_memory_button" href="{% url 'memory_create' %}">
+      New Memory
+    </a>
+    <a class="delete_journal" href="{% url 'journal_delete' journal.pk %}">Delete Journal</a>
+    </div>
   </div>
   <div class="journal_detail_card_container">
     {% for memory in journal.memories.all %}
